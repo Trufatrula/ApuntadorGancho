@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"todo","l":"Atmosfera"},{"p":"todo","l":"Entorno"},{"p":"todo","l":"PanelObjeto"},{"p":"todo","l":"Personaje"},{"p":"todo","l":"Principal"}];updateSearchResults();
