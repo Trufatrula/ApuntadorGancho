@@ -32,9 +32,7 @@ public class MoverRaton {
 			return pointPressed;
 		}
 	}
-	/** Devuelve el último vector de movimiento del ratón (desde la última vez que se llamó a este mismo método)
-	 * @return	Punto relativo a la ventana, null si el ratón no se ha movido nunca
-	 */
+
 	public Point getVectorRatonMovido() {
 		synchronized (lock) {
 			Point ret = new Point( 0, 0 );

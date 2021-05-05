@@ -9,9 +9,7 @@ public class Personaje extends Atmosfera {
 	double xvel;
 	double yvel;
 	Gancho gancho;
-	double arriba;
-	double abajo1;
-	double abajo2;
+	int c = 1;
 	
 	public Personaje(int x, int y, int ancho, int alto, PanelObjeto panel) {
 		super(x, y, ancho, alto);
@@ -86,7 +84,8 @@ public class Personaje extends Atmosfera {
 				y = colision.y;
 			}
 		}
-			if (panel.enemigo1.colision.intersects(colision)) {
+			if (panel.enemigo1.colision.intersects(colision) || y > 800) {
+				c = 2;
 				y = 200;
 				x = 200;
 		}
@@ -144,7 +143,14 @@ public class Personaje extends Atmosfera {
 	}
 	
 	public void dibujar(Graphics2D g) {
-		g.setColor(Color.BLACK);
+		switch (c) {
+		case 1:
+			g.setColor(Color.BLACK);
+			break;
+		case 2:
+			g.setColor(Color.GREEN);
+			break;
+		}
 		g.fillRect(x,y,ancho,alto);
 	}
 

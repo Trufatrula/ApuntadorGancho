@@ -10,6 +10,7 @@ public class Gancho extends Atmosfera {
 	Personaje personaje;
 	double angulo;
 	boolean apuntaEnemigo;
+	int c = 1;
 	
 	public Gancho(int x, int y, int ancho, int alto, Personaje personaje) {
 		super(x, y, ancho, alto);
@@ -26,21 +27,27 @@ public class Gancho extends Atmosfera {
 		
 		if(MoverRaton.pMovto != null) {				
 			angulo = Math.atan2(y - MoverRaton.pMovto.getY(), x - MoverRaton.pMovto.getX()) + Math.PI / 2;
-//			if((int) MoverRaton.pMovto.getX() == personaje.panel.enemigo1.x && (int) MoverRaton.pMovto.getY() == personaje.panel.enemigo1.y) {
-//				apuntaEnemigo = true;
+		}
+		if(Teclado.isSPulsado() && alto <= 400) {
+			alto = alto + 10;
+		} else if(Teclado.isSPulsado() && alto >= 400) {
+			c = 2;
+		} else if(alto > 60) {
+			alto = alto - 10;
+			c = 1;
 		}
 	}
 	
 	public void dibujar(Graphics2D g) {
 
-		if (apuntaEnemigo) {
-			g.setColor(Color.RED);
-//		} else if(x<=300) {
-//			g.setColor(Color.BLUE);
-		} else {
+		switch (c) {
+		case 1:
 			g.setColor(Color.GRAY);
+			break;
+		case 2:
+			g.setColor(Color.RED);
+			break;
 		}
-		
 		g.rotate(angulo, personaje.x+25, personaje.y+25);
 		g.fillRect(x,y,ancho,alto);
 		
